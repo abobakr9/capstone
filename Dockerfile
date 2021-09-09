@@ -1,5 +1,5 @@
 FROM python:3.7.3-stretch
-jfhvfbj
+
 ## Step 1:
 # Create a working directory
 WORKDIR /app
