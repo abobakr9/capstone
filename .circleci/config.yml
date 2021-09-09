@@ -40,8 +40,27 @@ jobs:
           command: |
             . venv/bin/activate
             make lint
+  build-docker:
+   machine: true
+   steps:
+     - checkout
+     # credentials stored in the UI
+     - run: |
+         echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+
+     # build the application image
+     - run: |
+          docker build --tag=capstone .
+          docker image ls
+
+     # push the image to dockerhub
+     - run: |
+          docker image tag capstone $dockerpath:${CIRCLE_WORKFLOW_ID:0:7}
+          docker image push $dockerpath:${CIRCLE_WORKFLOW_ID:0:7}
 
 workflows:
   default:
     jobs:
       - lint
+      - build-docker:
+            requires: [lint]
