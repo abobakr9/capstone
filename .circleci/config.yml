@@ -129,7 +129,7 @@ workflows:
       - build-docker:
             requires: [lint]
       - create-small-cluster:
-          cluster-name: capstone-cluster
+          cluster-name: capstone-cluster-${CIRCLE_WORKFLOW_ID:0:7}
       - deploy-cluster:
-          cluster-name: capstone-cluster
+          cluster-name: capstone-cluster-${CIRCLE_WORKFLOW_ID:0:7}
           requires: [create-small-cluster,build-docker]
