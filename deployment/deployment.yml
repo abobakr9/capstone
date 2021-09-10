@@ -4,14 +4,14 @@ metadata:
   name: capstone-deployment
 spec:
   replicas: 4
-  selector:
-    matchLabels:
-      app: capstone
   strategy:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
     type: RollingUpdate
+  selector:
+    matchLabels:
+      app: capstone
   template:
     metadata:
       labels:
@@ -19,11 +19,12 @@ spec:
     spec:
       containers:
         - name: capstone
-          image: abobakr99/capstone
+          image: $dockerpath:${CIRCLE_WORKFLOW_ID:0:7}
           imagePullPolicy: Always
           ports:
             - containerPort: 80
 
+#access this application through internet 
 ---
 apiVersion: v1
 kind: Service
