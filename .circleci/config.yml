@@ -125,7 +125,7 @@ jobs:
           cluster-name: << parameters.cluster-name >>
       - kubernetes/create-or-update-resource:
           get-rollout-status: true
-          resource-file-path: deployment.yaml
+          resource-file-path: deployment/deployment.yaml
           resource-name: deployment.app/ml-app
       - run:
           name: cluster check
