@@ -24,7 +24,7 @@ spec:
           ports:
             - containerPort: 80
 
-#access this application through internet 
+# access this application through internet 
 ---
 apiVersion: v1
 kind: Service
