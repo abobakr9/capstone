@@ -6,8 +6,9 @@ version: 2.1
 orbs:
   node: circleci/node@4.1.0
   slack: circleci/slack@4.1
-  kubernetes: circleci/kubernetes@0.12.0
   aws-eks: circleci/aws-eks@0.2.3
+  kubernetes: circleci/kubernetes@0.12.0
+  
 
 jobs:
   lint:
