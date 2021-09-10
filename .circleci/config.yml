@@ -127,10 +127,11 @@ workflows:
     jobs:
       - lint
       - build-docker:
-            requires: [lint]
+            requires: 
+                  - lint
       - create-small-cluster:
           cluster-name: capstone-cluster
       - deploy-cluster:
           cluster-name: capstone-cluster
           requires:
-            - aws-eks/create-cluster
+            - create-small-cluster
